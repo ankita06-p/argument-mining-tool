@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>AM Workspace // Argument Mining Platform</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@300;400;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"/>
+    <style>
+        body { 
+            background-color: #030303; 
+            color: #f4f4f5; 
+            overflow: hidden; 
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Futuristic Neural Mesh Background for Stage 2 */
+        .futuristic-mesh {
+            background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.16) 0%, transparent 50%),
+                        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.06) 0%, transparent 35%),
+                        radial-gradient(circle at 85% 85%, rgba(244, 63, 94, 0.06) 0%, transparent 35%),
+                        #020204;
+            background-size: 200% 200%;
+            animation: meshMove 12s ease infinite;
+        }
+        @keyframes meshMove {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .canvas-grid {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px); 
+            background-size: 32px 32px;
+        }
+
+        /* Bold Highlighters matching your style preference */
+        .highlight-claim { 
+            background: rgba(56, 189, 248, 0.12);
+            border-left: 5px solid #38bdf8; padding: 16px 20px; border-radius: 0 12px 12px 0;
+            font-weight: 700; font-size: 15px; color: #f8fafc;
+        }
+        .highlight-nonclaim { 
+            background: rgba(39, 39, 42, 0.3);
+            border-left: 5px solid #52525b; padding: 16px 20px; border-radius: 0 12px 12px 0;
+            font-weight: 600; font-size: 15px; color: #a1a1aa;
+        }
+
+        .glow-btn {
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
+            background: linear-gradient(90deg, #0ea5e9 0%, #38bdf8 100%);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .glow-btn:hover { 
+            transform: scale(1.04); 
+            box-shadow: 0 0 45px rgba(56, 189, 248, 0.75);
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col justify-between select-none">
+
+    <div id="stage-landing" class="flex-1 flex flex-col justify-center items-center px-6 relative">
+        <div class="absolute inset-0 pointer-events-none opacity-20 canvas-grid"></div>
+        <div class="text-center max-w-3xl space-y-10 z-10">
+            <div class="flex flex-col items-center gap-6">
+                <div class="w-20 h-20 rounded-3xl bg-zinc-900 border border-zinc-700/50 flex items-center justify-center shadow-2xl">
+                    <span class="material-symbols-outlined text-4xl text-sky-400">psychology</span>
+                </div>
+                <h1 class="text-7xl font-black tracking-tighter bg-gradient-to-b from-white to-zinc-500 bg-clip-text text-transparent font-mono uppercase">AM Workspace</h1>
+            </div>
+            <p class="text-xl text-zinc-300 font-medium leading-relaxed max-w-xl mx-auto">Computational argument mining interface for structural logical extraction.</p>
+            <button onclick="goToStage(2)" class="glow-btn text-zinc-950 font-black text-sm tracking-widest uppercase px-12 py-4 rounded-xl shadow-2xl">Get Started ➔</button>
+        </div>
+    </div>
+
+    <div id="stage-education" class="hidden flex-1 flex flex-col items-center px-6 relative futuristic-mesh overflow-y-auto py-12">
+        <div class="absolute inset-0 pointer-events-none opacity-30 canvas-grid"></div>
+        <div class="max-w-4xl w-full bg-black/50 border border-white/10 rounded-[40px] p-12 shadow-2xl backdrop-blur-3xl space-y-10 z-10 my-auto">
+            <div class="text-center space-y-2">
+                <h2 class="text-4xl font-black text-white uppercase tracking-tighter">Core Architecture Definitions</h2>
+                <p class="text-zinc-400 font-bold uppercase tracking-widest text-xs">Understand the foundations of standard argument schema generation</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
+                    <div class="text-sky-400 flex items-center gap-3 font-black uppercase text-lg tracking-widest">
+                        <span class="material-symbols-outlined font-bold">gavel</span> Claims
+                    </div>
+                    <p class="text-zinc-200 text-base font-normal leading-relaxed">
+                        A <strong class="text-sky-400 font-bold">Claim</strong> acts as the central assertion, thesis, or conclusion of an argument. It represents the primary stance that the author is attempting to prove, defend, or validate.
+                    </p>
+                </div>
+                <div class="p-8 rounded-3xl bg-white/5 border border-white/10 space-y-4">
+                    <div class="text-zinc-400 flex items-center gap-3 font-black uppercase text-lg tracking-widest">
+                        <span class="material-symbols-outlined font-bold">info</span> Non-Claims
+                    </div>
+                    <p class="text-zinc-300 text-base font-normal leading-relaxed">
+                        A <strong class="text-zinc-400 font-bold">Non-Claim</strong> covers context, baseline metrics, definitions, or general narrative details that form the structural background surrounding a target assertion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-black/40 border border-white/5 space-y-4">
+                <div class="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span> Engine Scope
+                </div>
+                <p class="text-zinc-200 text-base font-normal leading-relaxed">
+                    This iteration applies a high-fidelity <span class="text-sky-400 font-bold underline decoration-sky-500/40 underline-offset-4">Binary Classifier</span> architecture powered by Google's Universal Sentence Encoder vector maps to segment source data blocks systematically.
+                </p>
+            </div>
+
+            <div class="flex justify-center pt-2">
+                <button onclick="goToStage(3)" class="glow-btn text-zinc-950 font-black text-sm tracking-widest uppercase px-12 py-4.5 rounded-full shadow-2xl">
+                    Launch Workspace Canvas ➔
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="stage-workspace" class="hidden flex-1 flex flex-col overflow-hidden">
+        <nav class="bg-black border-b border-zinc-800 h-16 flex items-center px-8 justify-between z-50">
+            <div class="flex items-center gap-4">
+                <div class="w-3 h-3 rounded-full bg-sky-500 shadow-[0_0_10px_#0ea5e9]"></div>
+                <span class="font-black text-lg tracking-tighter uppercase font-mono">AM // Core Engine</span>
+            </div>
+            <button id="analyze-btn" class="bg-white text-black font-black text-xs px-8 py-3 rounded-xl uppercase tracking-widest hover:invert transition-all">Analyze Text</button>
+        </nav>
+
+        <div class="flex-1 flex overflow-hidden relative">
+            <div id="left-panel" class="w-3/4 h-full flex flex-col bg-black overflow-hidden z-10 border-r border-zinc-900">
+                <div class="p-8 border-b border-zinc-900 bg-zinc-900/20 flex flex-col gap-4">
+                    <label class="text-xs font-black uppercase tracking-widest text-sky-400">1. Input Document</label>
+                    <textarea id="user-input-text" class="w-full h-44 bg-zinc-950 border border-zinc-800 rounded-2xl p-6 text-base font-bold text-white focus:outline-none focus:border-sky-500 transition-all resize-none leading-relaxed" placeholder="Paste essay here...">The transition to renewable energy systems is paramount for global sustainability. Rapid decarbonization of the energy sector is necessary to limit global warming to 1.5°C above pre-industrial levels. This assertion is heavily supported by numerous validation models analyzing emission trajectories. Current fossil fuel consumption accounts for over 70% of global greenhouse gas emissions.</textarea>
+                </div>
+                
+                <div class="flex-1 flex flex-col overflow-hidden">
+                    <div class="px-8 py-6 border-b border-zinc-900">
+                        <h3 class="text-xs font-black uppercase tracking-widest text-zinc-400">2. Neural Network Extraction Stream</h3>
+                    </div>
+                    <div id="document-text" class="flex-1 overflow-y-auto p-10 space-y-8">
+                        <p class="text-zinc-500 font-black uppercase tracking-widest text-center mt-20">Awaiting Analysis Payload...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-1/4 bg-zinc-950 border-l border-zinc-900 flex flex-col p-6 gap-6 shrink-0 z-20">
+                <p class="text-[10px] font-black uppercase tracking-widest text-zinc-500 border-b border-zinc-800 pb-4">Evaluation Telemetry</p>
+                <div class="space-y-4">
+                    <div class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800">
+                        <span class="text-[9px] font-black uppercase text-zinc-500">Total Claims Found</span>
+                        <div id="metric-claims" class="text-3xl font-black text-sky-400 mt-1">0</div>
+                    </div>
+                    <div class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800">
+                        <span class="text-[9px] font-black uppercase text-zinc-500">Total Sentences Parsed</span>
+                        <div id="metric-total" class="text-3xl font-black text-white mt-1">0</div>
+                    </div>
+                    <div class="bg-zinc-900/50 p-4 rounded-2xl border border-zinc-800">
+                        <span class="text-[9px] font-black uppercase text-zinc-500">Model Average Confidence</span>
+                        <div id="metric-confidence" class="text-3xl font-black text-emerald-400 mt-1">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goToStage(s) {
+            document.querySelectorAll('[id^="stage-"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`stage-${s === 1 ? 'landing' : s === 2 ? 'education' : 'workspace'}`).classList.remove('hidden');
+        }
+
+        document.getElementById("analyze-btn").addEventListener("click", async () => {
+            const txt = document.getElementById("user-input-text").value.trim();
+            if(!txt) return alert("Input text block required.");
+            
+            const btn = document.getElementById("analyze-btn");
+            btn.textContent = "PROCESSING FRAMEWORK...";
+            
+            try {
+                const res = await fetch("http://127.0.0.1:8000/api/analyze", {
+                    method: "POST",
+                    headers: {"Content-Type":"application/json"},
+                    body: JSON.stringify({text: txt})
+                });
+                const data = await res.json();
+                
+                const container = document.getElementById("document-text");
+                container.innerHTML = "";
+                
+                data.document_chunks.forEach(c => {
+                    const div = document.createElement("div");
+                    div.className = "space-y-1";
+                    
+                    if(c.type === "Claim") {
+                        div.innerHTML = `
+                            <p class="text-[10px] font-black uppercase tracking-wider text-sky-400 flex items-center gap-1"><span class="material-symbols-outlined text-xs">gavel</span> Argumentative Claim // ${c.confidence}% Confidence</p>
+                            <div class="highlight-claim">${c.text}</div>
+                        `;
+                    } else {
+                        div.innerHTML = `
+                            <p class="text-[10px] font-black uppercase tracking-wider text-zinc-500 flex items-center gap-1"><span class="material-symbols-outlined text-xs">info</span> Contextual Non-Claim // ${c.confidence}% Confidence</p>
+                            <div class="highlight-nonclaim">${c.text}</div>
+                        `;
+                    }
+                    container.appendChild(div);
+                });
+
+                document.getElementById('metric-claims').textContent = data.metrics.claim_count;
+                document.getElementById('metric-total').textContent = data.metrics.total_sentences;
+                document.getElementById('metric-confidence').textContent = data.metrics.confidence;
+                
+            } catch(e) {
+                alert("API Interface Server Offline.");
+            } finally {
+                btn.textContent = "ANALYZE TEXT";
+            }
+        });
+    </script>
+</body>
+</html>

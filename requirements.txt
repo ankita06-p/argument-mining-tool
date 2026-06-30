@@ -1,0 +1,11 @@
+numpy
+tensorflow
+tensorflow-hub
+keras
+scikit-learn
+nltk
+flask
+flask-cors
+torch
+transformers
+accelerate
